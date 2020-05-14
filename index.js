@@ -281,9 +281,15 @@ function getModelYears(inventory) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory, id) {
+  for(let i = 0; i < inventory.length; i++) {
+    let car = inventory[i]
+    if(car.id === id) {
+      return `This is a ${car.car_make} ${car.car_model}`
+    }
+  }
 }
+
 
 /**
  * ### Challenge `getOlderCars`
@@ -299,8 +305,16 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(inventory, maxYear) {
+  let carYears = []
+
+  for(let i = 0; i < inventory.length; i++) {
+    let car = inventory[i]
+    if(car.car_year <= maxYear) {
+      carYears.push(car.car_year)
+    }
+  }
+  return carYears
 }
 
 /**
@@ -316,8 +330,26 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  let germanCars = []
+
+  for(let i = 0; i < inventory.length; i++) {
+    let car = inventory[i]
+    switch (car.car_make) {
+      case "Audi":
+        germanCars.push(car.car_make)
+        break;
+      case "Mercedes-Benz":
+        germanCars.push(car.car_make)
+        break;
+      case "Volkswagen":
+        germanCars.push(car.car_make)
+        break;
+      case "BMW":
+        germanCars.push(car.car_make)
+    }
+  }
+  return germanCars
 }
 
 /**
